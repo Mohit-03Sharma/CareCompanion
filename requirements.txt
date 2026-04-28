@@ -1,0 +1,36 @@
+# Web scraping + parsing
+requests==2.32.3
+beautifulsoup4==4.12.3
+pdfplumber==0.11.4
+
+# Embeddings
+sentence-transformers==3.0.1
+
+# Database
+psycopg2-binary==2.9.9
+pgvector==0.3.2
+sqlalchemy==2.0.31
+
+# BM25 keyword search
+rank-bm25==0.2.2
+
+# LLM
+groq==0.9.0
+
+# API
+fastapi==0.111.1
+uvicorn==0.30.1
+
+# Experiment tracking
+mlflow==2.14.1
+
+# Monitoring
+evidently==0.4.30
+
+# Testing + linting
+pytest==8.2.2
+flake8==7.1.0
+
+# Utilities
+python-dotenv==1.0.1
+pydantic==2.8.2

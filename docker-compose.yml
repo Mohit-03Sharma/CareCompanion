@@ -1,0 +1,15 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: carecompanion_db
+    environment:
+      POSTGRES_USER: carecompanion
+      POSTGRES_PASSWORD: carecompanion
+      POSTGRES_DB: carecompanion
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
