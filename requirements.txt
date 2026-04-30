@@ -34,3 +34,5 @@ flake8==7.1.0
 # Utilities
 python-dotenv==1.0.1
 pydantic==2.8.2
+
+lxml==5.2.2
