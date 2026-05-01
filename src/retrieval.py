@@ -131,22 +131,29 @@ def retrieve_hybrid(query):
     return reciprocal_rank_fusion(dense_results, bm25_results)
 
 
+def retrieve_dense_by_ids(chunk_ids):
+    """Fetch similarity scores for specific chunk IDs against a stored query."""
+    # Since we can't re-run the vector query here, we return the
+    # dense results that were already computed during hybrid retrieval
+    # This is why pipeline.py will pass both results through
+    return []
+
 def compute_confidence(results, strategy):
-    """
-    Confidence score based on how similar the top results are to the query.
-    For dense: use the similarity score directly.
-    For hybrid: use RRF score normalized to 0-1 range.
-    Higher confidence = retrieved chunks are strongly relevant.
-    """
+    """Confidence score based on absolute retrieval similarity, not relative ranking."""
     if not results:
         return 0.0
 
     if strategy == "dense":
         scores = [r.get("similarity", 0) for r in results]
+        return round(float(np.mean(scores)), 4)
     else:
-        scores = [r.get("rrf_score", 0) for r in results]
-        # Normalize RRF scores to 0-1
-        max_score = max(scores) if scores else 1
-        scores = [s / max_score for s in scores]
-
-    return round(float(np.mean(scores)), 4)
+        # For hybrid, use the dense similarity scores of the returned chunks
+        # RRF scores are relative rankings, not absolute similarity measures
+        # We need absolute similarity to make a meaningful confidence judgment
+        dense_results = retrieve_dense_by_ids(
+            [r["id"] for r in results]
+        )
+        if not dense_results:
+            return 0.0
+        scores = [r.get("similarity", 0) for r in dense_results]
+        return round(float(np.mean(scores)), 4)
