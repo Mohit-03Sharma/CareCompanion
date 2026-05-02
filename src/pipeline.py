@@ -1,6 +1,3 @@
-import sys
-sys.path.insert(0, 'src')
-
 from retrieval import retrieve_hybrid, retrieve_dense, compute_confidence
 from llm import generate_answer
 from safety import check_safety, check_confidence
@@ -10,7 +7,6 @@ from database import get_connection
 def run_pipeline(query, strategy="hybrid"):
     """
     Full pipeline: safety check → retrieve → confidence check → generate.
-    
     Returns a dict with answer, sources, confidence, and safety metadata.
     """
 
@@ -36,7 +32,7 @@ def run_pipeline(query, strategy="hybrid"):
     else:
         chunks = retrieve_dense(query)
         confidence = compute_confidence(chunks, "dense")
-        
+
     # Step 3 — Confidence gate: don't answer if retrieval quality is low
     confident_enough, low_conf_response = check_confidence(confidence)
     if not confident_enough:

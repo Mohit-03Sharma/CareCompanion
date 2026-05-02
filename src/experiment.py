@@ -1,10 +1,7 @@
-import sys
-sys.path.insert(0, 'src')
-
 import numpy as np
 from scipy import stats
 from sentence_transformers import SentenceTransformer
-from retrieval import retrieve_dense, retrieve_hybrid, compute_confidence
+from retrieval import retrieve_dense, retrieve_hybrid
 from llm import generate_answer
 from database import get_connection
 
@@ -126,7 +123,7 @@ def run_experiment():
     for i, item in enumerate(EVAL_DATASET):
         query = item["query"]
         ground_truth = item["ground_truth"]
-        print(f"[{i+1}/{len(EVAL_DATASET)}] {query[:60]}")
+        print(f"[{i + 1} / {len(EVAL_DATASET)}] {query[:60]}")
 
         # Strategy A — Dense
         try:
@@ -192,16 +189,16 @@ def analyze_results(dense_scores, hybrid_scores):
         scale=stats.sem(diff)
     )
 
-    print("\n" + "="*50)
+    print("\n")
     print("EXPERIMENT RESULTS")
-    print("="*50)
-    print(f"Questions evaluated:     {len(dense_scores)}")
-    print(f"Dense mean score:        {np.mean(dense_arr):.4f}")
-    print(f"Hybrid mean score:       {np.mean(hybrid_arr):.4f}")
-    print(f"Mean difference:         {np.mean(diff):.4f}")
-    print(f"t-statistic:             {t_stat:.4f}")
-    print(f"p-value:                 {p_value:.4f}")
-    print(f"95% CI on difference:    [{ci[0]:.4f}, {ci[1]:.4f}]")
+    print("\n")
+    print(f"Questions evaluated: {len(dense_scores)}")
+    print(f"Dense mean score: {np.mean(dense_arr):.4f}")
+    print(f"Hybrid mean score: {np.mean(hybrid_arr):.4f}")
+    print(f"Mean difference: {np.mean(diff):.4f}")
+    print(f"t-statistic: {t_stat:.4f}")
+    print(f"p-value: {p_value:.4f}")
+    print(f"95% CI on difference: [{ci[0]:.4f}, {ci[1]:.4f}]")
     print()
 
     if p_value < 0.05:
@@ -212,8 +209,8 @@ def analyze_results(dense_scores, hybrid_scores):
 
     print()
     print("Interpretation:")
-    print(f"  The p-value of {p_value:.4f} means there is a {p_value*100:.1f}% probability")
-    print(f"  of observing this difference if both strategies were equally good.")
+    print(f"  The p-value of {p_value:.4f} means there is a {p_value * 100:.1f}% probability")
+    print("  of observing this difference if both strategies were equally good.")
     if p_value < 0.05:
         print("  This is below our 0.05 threshold — the difference is real, not random noise.")
     else:

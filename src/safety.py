@@ -61,7 +61,6 @@ LOW_CONFIDENCE_RESPONSE = (
 def check_safety(query):
     """
     Run the query through the safety layer before hitting the LLM.
-    
     Returns a tuple: (is_safe, category, response)
     - is_safe: False means return the hardcoded response, skip the LLM
     - category: what type of flag was triggered

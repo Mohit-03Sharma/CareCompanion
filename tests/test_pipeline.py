@@ -1,7 +1,3 @@
-import sys
-sys.path.insert(0, 'src')
-
-import pytest
 from safety import check_safety, check_confidence
 from retrieval import chunk_text_helper
 
@@ -10,37 +6,37 @@ from retrieval import chunk_text_helper
 
 def test_emergency_query_flagged():
     is_safe, category, _ = check_safety("I have chest pain and can't breathe")
-    assert is_safe == False
+    assert not is_safe
     assert category == "emergency"
 
 
 def test_dosage_query_flagged():
     is_safe, category, _ = check_safety("What dosage of ibuprofen should I take?")
-    assert is_safe == False
+    assert not is_safe
     assert category == "dosage"
 
 
 def test_diagnosis_query_flagged():
     is_safe, category, _ = check_safety("Do I have diabetes?")
-    assert is_safe == False
+    assert not is_safe
     assert category == "diagnosis"
 
 
 def test_normal_query_passes_safety():
     is_safe, category, _ = check_safety("What are the symptoms of diabetes?")
-    assert is_safe == True
+    assert is_safe
     assert category is None
 
 
 def test_low_confidence_gated():
     confident, response = check_confidence(0.1)
-    assert confident == False
+    assert not confident
     assert response is not None
 
 
 def test_high_confidence_passes():
     confident, response = check_confidence(0.8)
-    assert confident == True
+    assert not confident
     assert response is None
 
 

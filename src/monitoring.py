@@ -1,8 +1,4 @@
-import sys
-sys.path.insert(0, 'src')
-
 import pandas as pd
-import numpy as np
 from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset
 from evidently import ColumnMapping

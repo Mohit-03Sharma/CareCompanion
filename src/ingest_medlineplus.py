@@ -119,11 +119,11 @@ def run_ingestion():
     total_chunks = 0
 
     for i, (name, url) in enumerate(TOPICS):
-        print(f"[{i+1}/{len(TOPICS)}] {name}")
+        print(f"[{i + 1} / {len(TOPICS)}] {name}")
 
         text = scrape_topic_page(url)
         if not text:
-            print(f"  Skipped — no content")
+            print("  Skipped — no content")
             continue
 
         chunks = chunk_text(text)

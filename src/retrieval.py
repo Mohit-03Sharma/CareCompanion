@@ -1,4 +1,3 @@
-import os
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from database import get_connection
@@ -19,6 +18,7 @@ def chunk_text_helper(text, chunk_size=400, overlap=50):
         start += chunk_size - overlap
     return chunks
 
+
 def embed_query(query):
     """Convert a question into a 384-dimensional vector."""
     return model.encode(query).tolist()
@@ -38,12 +38,7 @@ def retrieve_dense(query):
     # The <=> operator is pgvector's cosine distance
     # We order by distance ascending — smaller distance = more similar
     cursor.execute("""
-        SELECT 
-            id,
-            topic,
-            url,
-            chunk_index,
-            content,
+        SELECT id, topic, url, chunk_index, content,
             1 - (embedding <=> %s::vector) as similarity
         FROM knowledge_chunks
         ORDER BY embedding <=> %s::vector

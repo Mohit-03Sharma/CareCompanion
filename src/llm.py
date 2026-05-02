@@ -23,7 +23,7 @@ def format_context(retrieved_chunks):
     context_parts = []
     for i, chunk in enumerate(retrieved_chunks):
         context_parts.append(
-            f"[Source {i+1} — {chunk['topic']} ({chunk['url']})]\n{chunk['content']}"
+            f"[Source {i + 1} — {chunk['topic']} ({chunk['url']})]\n{chunk['content']}"
         )
     return "\n\n".join(context_parts)
 
