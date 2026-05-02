@@ -1,0 +1,75 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: carecompanion
+          POSTGRES_PASSWORD: carecompanion
+          POSTGRES_DB: carecompanion
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Set up database schema
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: carecompanion
+          DB_USER: carecompanion
+          DB_PASSWORD: carecompanion
+        run: python src/database.py
+
+      - name: Run tests
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: carecompanion
+          DB_USER: carecompanion
+          DB_PASSWORD: carecompanion
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python -m pytest tests/ -v
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install flake8
+        run: pip install flake8
+
+      - name: Run flake8
+        run: flake8 src/ tests/ --max-line-length=100 --ignore=E501,W503

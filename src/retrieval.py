@@ -10,6 +10,15 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 TOP_K = 5
 
 
+def chunk_text_helper(text, chunk_size=400, overlap=50):
+    """Standalone chunk function used by tests."""
+    chunks = []
+    start = 0
+    while start < len(text):
+        chunks.append(text[start:start + chunk_size])
+        start += chunk_size - overlap
+    return chunks
+
 def embed_query(query):
     """Convert a question into a 384-dimensional vector."""
     return model.encode(query).tolist()
@@ -131,29 +140,27 @@ def retrieve_hybrid(query):
     return reciprocal_rank_fusion(dense_results, bm25_results)
 
 
-def retrieve_dense_by_ids(chunk_ids):
-    """Fetch similarity scores for specific chunk IDs against a stored query."""
-    # Since we can't re-run the vector query here, we return the
-    # dense results that were already computed during hybrid retrieval
-    # This is why pipeline.py will pass both results through
-    return []
-
 def compute_confidence(results, strategy):
-    """Confidence score based on absolute retrieval similarity, not relative ranking."""
+    """
+    Confidence based on cosine similarity scores.
+    Dense results carry similarity directly.
+    Hybrid results don't — so we check if any dense similarity
+    scores were attached, otherwise fall back to RRF-based estimate.
+    """
     if not results:
         return 0.0
 
-    if strategy == "dense":
-        scores = [r.get("similarity", 0) for r in results]
-        return round(float(np.mean(scores)), 4)
-    else:
-        # For hybrid, use the dense similarity scores of the returned chunks
-        # RRF scores are relative rankings, not absolute similarity measures
-        # We need absolute similarity to make a meaningful confidence judgment
-        dense_results = retrieve_dense_by_ids(
-            [r["id"] for r in results]
-        )
-        if not dense_results:
-            return 0.0
-        scores = [r.get("similarity", 0) for r in dense_results]
-        return round(float(np.mean(scores)), 4)
+    # Try to get actual cosine similarity scores first
+    similarity_scores = [r.get("similarity", None) for r in results]
+    similarity_scores = [s for s in similarity_scores if s is not None]
+
+    if similarity_scores:
+        return round(float(np.mean(similarity_scores)), 4)
+
+    # Hybrid results have rrf_score not similarity
+    # RRF max theoretical score for rank 1 from both lists = 2/(60+1) = 0.0328
+    # We normalize against that maximum
+    rrf_scores = [r.get("rrf_score", 0) for r in results]
+    max_theoretical = 2 / (60 + 1)
+    normalized = [s / max_theoretical for s in rrf_scores]
+    return round(float(np.mean(normalized)), 4)
