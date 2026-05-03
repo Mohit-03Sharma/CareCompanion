@@ -54,7 +54,7 @@ jobs:
           DB_USER: carecompanion
           DB_PASSWORD: carecompanion
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python -m pytest tests/ -v
+        run: PYTHONPATH=src python -m pytest tests/ -v
 
   lint:
     runs-on: ubuntu-latest
