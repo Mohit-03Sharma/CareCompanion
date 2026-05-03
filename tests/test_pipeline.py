@@ -36,7 +36,7 @@ def test_low_confidence_gated():
 
 def test_high_confidence_passes():
     confident, response = check_confidence(0.8)
-    assert not confident
+    assert confident
     assert response is None
 
 
