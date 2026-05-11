@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File, Form
 from pydantic import BaseModel
 from pipeline import run_pipeline
+from extractor import process_note
 
 app = FastAPI(title="CareCompanion API")
 
@@ -64,3 +65,41 @@ def drift_status():
     cursor.close()
     conn.close()
     return row
+
+
+@app.post("/extract-note")
+async def extract_note(file: UploadFile = File(None), text: str = Form(None)):
+    """Accept either a PDF file upload or pasted text, return structured extraction."""
+    import tempfile
+    import os
+
+    if file and file.filename:
+        # PDF upload path
+        contents = await file.read()
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+            tmp.write(contents)
+            tmp_path = tmp.name
+        try:
+            result = process_note(file_path=tmp_path)
+        finally:
+            os.unlink(tmp_path)
+    elif text:
+        # Plain text paste path
+        result = process_note(text=text)
+    else:
+        return {"error": "Provide either a file or text"}
+
+    return result
+
+
+@app.get("/knowledge-topics")
+def knowledge_topics():
+    """Return all topics in the knowledge base — used by clinician page."""
+    from database import get_connection
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT DISTINCT topic FROM knowledge_chunks ORDER BY topic")
+    topics = [row["topic"] for row in cursor.fetchall()]
+    cursor.close()
+    conn.close()
+    return {"topics": topics}
