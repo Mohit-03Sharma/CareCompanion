@@ -1,0 +1,65 @@
+DISCHARGE SUMMARY
+
+PATIENT: John M., 58-year-old male
+DATE OF ADMISSION: 2026-04-01
+DATE OF DISCHARGE: 2026-04-04
+
+ADMITTING DIAGNOSIS: Uncontrolled Type 2 Diabetes Mellitus
+
+HISTORY OF PRESENT ILLNESS:
+Patient is a 58-year-old male with a 10-year history of Type 2 Diabetes Mellitus
+presenting with blood glucose levels consistently above 350 mg/dL over the past
+two weeks. Patient reports increased thirst, frequent urination, fatigue, and
+blurred vision. He admits to poor medication compliance and dietary indiscretion
+over the past month following a stressful life event.
+
+PAST MEDICAL HISTORY:
+1. Type 2 Diabetes Mellitus — diagnosed 2016
+2. Hypertension — controlled on Lisinopril
+3. Hyperlipidemia — on Atorvastatin
+
+MEDICATIONS ON ADMISSION:
+1. Metformin 1000mg twice daily
+2. Lisinopril 10mg once daily
+3. Atorvastatin 20mg once daily
+
+PHYSICAL EXAMINATION:
+Vitals: BP 148/92, HR 88, Temp 98.6F, RR 16, O2 Sat 98% on room air
+General: Alert and oriented, mild distress
+Eyes: Mild bilateral diabetic retinopathy noted on fundoscopic exam
+Extremities: Mild peripheral edema bilateral lower extremities
+Skin: Dry, decreased turgor
+
+LABORATORY RESULTS:
+HbA1c: 10.2%
+Fasting glucose: 312 mg/dL
+BMP: Na 138, K 4.1, Cr 1.1, BUN 18
+Urinalysis: 2+ glucose, trace protein
+
+HOSPITAL COURSE:
+Patient was admitted and started on insulin drip protocol. Endocrinology was
+consulted. Glucose levels were brought under control over 48 hours. Diabetes
+education was provided. Medication regimen was adjusted.
+
+DISCHARGE MEDICATIONS:
+1. Metformin 1000mg twice daily — continue
+2. Glipizide 5mg once daily with breakfast — NEW
+3. Insulin Glargine 20 units subcutaneous at bedtime — NEW
+4. Lisinopril 10mg once daily — continue
+5. Atorvastatin 20mg once daily — continue
+
+DISCHARGE INSTRUCTIONS:
+1. Follow low carbohydrate diet — less than 45g carbs per meal
+2. Check blood glucose every morning before breakfast and log results
+3. Return to ED immediately if blood glucose exceeds 400 mg/dL
+4. Watch for signs of hypoglycemia: shakiness, sweating, confusion
+5. Schedule follow-up with primary care within 7 days
+6. Follow-up with Endocrinology in 4 weeks
+
+FOLLOW-UP:
+Primary Care Physician — within 7 days
+Endocrinology — 4 weeks
+Ophthalmology — 3 months for diabetic retinopathy monitoring
+
+DISCHARGE CONDITION: Stable, improved
+ATTENDING PHYSICIAN: Dr. Sarah Chen, MD

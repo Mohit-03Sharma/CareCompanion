@@ -1,0 +1,72 @@
+DISCHARGE SUMMARY
+
+PATIENT: Robert K., 71-year-old male
+DATE OF ADMISSION: 2026-04-05
+DATE OF DISCHARGE: 2026-04-09
+
+ADMITTING DIAGNOSIS: Acute Exacerbation of COPD
+
+HISTORY OF PRESENT ILLNESS:
+Patient is a 71-year-old male with severe COPD presenting with worsening shortness
+of breath, increased sputum production with yellow-green discoloration, and fever
+of 101.2F for the past 3 days. Patient has a 50 pack-year smoking history, quit
+8 years ago. He reports his rescue inhaler is providing less than 2 hours of relief.
+
+PAST MEDICAL HISTORY:
+1. COPD — severe, FEV1 38% predicted
+2. Coronary Artery Disease — stented 2021
+3. Hypertension
+4. Former smoker — 50 pack years, quit 2018
+
+MEDICATIONS ON ADMISSION:
+1. Tiotropium inhaler once daily
+2. Fluticasone/Salmeterol inhaler twice daily
+3. Albuterol rescue inhaler as needed
+4. Aspirin 81mg once daily
+5. Metoprolol 25mg twice daily
+6. Lisinopril 10mg once daily
+
+PHYSICAL EXAMINATION:
+Vitals: BP 138/86, HR 104, Temp 101.2F, RR 26, O2 Sat 88% on room air
+General: Moderate respiratory distress, using accessory muscles
+Chest: Barrel chest, diffuse expiratory wheezes, prolonged expiration
+Extremities: Mild bilateral lower extremity edema
+
+LABORATORY RESULTS:
+ABG: pH 7.34, PaCO2 52, PaO2 58 on room air
+CBC: WBC 13.2 with left shift
+CMP: Within normal limits
+Sputum culture: Haemophilus influenzae
+Chest X-ray: Hyperinflation, no infiltrates, no pneumothorax
+
+HOSPITAL COURSE:
+Patient was started on supplemental oxygen, nebulized bronchodilators every 4
+hours, IV methylprednisolone, and Azithromycin for bacterial exacerbation.
+Respiratory therapy was involved. Patient improved significantly over 4 days.
+Pulmonology was consulted. Smoking cessation resources provided.
+
+DISCHARGE MEDICATIONS:
+1. Tiotropium inhaler once daily — continue
+2. Fluticasone/Salmeterol inhaler twice daily — continue
+3. Albuterol rescue inhaler as needed — continue
+4. Prednisone 40mg once daily x 5 days — NEW, taper course
+5. Azithromycin 250mg once daily x 3 days — NEW
+6. Aspirin 81mg — continue
+7. Metoprolol 25mg twice daily — continue
+8. Lisinopril 10mg once daily — continue
+
+DISCHARGE INSTRUCTIONS:
+1. Complete full course of Prednisone and Azithromycin — do not stop early
+2. Use rescue inhaler before any physical activity
+3. Return to ED if oxygen saturation drops below 90% or breathing worsens
+4. Pulmonary rehabilitation referral provided — strongly encouraged to attend
+5. Annual influenza and pneumococcal vaccines due — schedule with PCP
+6. Home oxygen prescribed — 2L via nasal cannula at rest
+
+FOLLOW-UP:
+Primary Care Physician — within 5 days
+Pulmonology — 2 weeks
+Pulmonary Rehabilitation — start within 2 weeks
+
+DISCHARGE CONDITION: Improved, stable on 2L oxygen
+ATTENDING PHYSICIAN: Dr. Amelia Torres, MD

@@ -1,5 +1,4 @@
 import json
-import numpy as np
 from sentence_transformers import SentenceTransformer
 from database import get_connection
 

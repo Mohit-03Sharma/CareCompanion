@@ -1,0 +1,62 @@
+DISCHARGE SUMMARY
+
+PATIENT: Maria L., 64-year-old female
+DATE OF ADMISSION: 2026-04-10
+DATE OF DISCHARGE: 2026-04-12
+
+ADMITTING DIAGNOSIS: Hypertensive Urgency
+
+HISTORY OF PRESENT ILLNESS:
+Patient is a 64-year-old female with known hypertension presenting to the ED
+with severe headache, dizziness, and blurred vision. Blood pressure on arrival
+was 198/112 mmHg. Patient reports she ran out of her antihypertensive medications
+five days ago and was unable to refill due to insurance issues.
+
+PAST MEDICAL HISTORY:
+1. Essential Hypertension — diagnosed 2018
+2. Type 2 Diabetes Mellitus — diet controlled
+3. Chronic Kidney Disease Stage 2
+
+MEDICATIONS ON ADMISSION:
+1. Amlodipine 10mg once daily — not taking for 5 days
+2. Hydrochlorothiazide 25mg once daily — not taking for 5 days
+
+PHYSICAL EXAMINATION:
+Vitals: BP 198/112, HR 92, Temp 98.4F, RR 18, O2 Sat 97% on room air
+General: Alert, anxious, mild distress
+Neurological: No focal deficits, headache present
+Eyes: Mild papilledema on fundoscopic exam
+Cardiovascular: Regular rate and rhythm, no murmurs
+Renal: No costovertebral angle tenderness
+
+LABORATORY RESULTS:
+BMP: Na 141, K 3.8, Cr 1.4, BUN 22, eGFR 52
+CBC: Within normal limits
+EKG: Normal sinus rhythm, left ventricular hypertrophy pattern
+Urinalysis: Trace protein
+
+HOSPITAL COURSE:
+Patient was admitted for blood pressure management. IV Labetalol was administered
+with gradual reduction in blood pressure over 24 hours. Oral medications were
+restarted. Social work was consulted to assist with medication access program.
+Patient was educated on medication compliance.
+
+DISCHARGE MEDICATIONS:
+1. Amlodipine 10mg once daily — restart
+2. Hydrochlorothiazide 25mg once daily — restart
+3. Lisinopril 5mg once daily — NEW, added for renal protection given CKD
+
+DISCHARGE INSTRUCTIONS:
+1. Take all blood pressure medications every day without missing doses
+2. Monitor blood pressure at home daily — target below 130/80
+3. Return to ED immediately if BP exceeds 180/110 or severe headache returns
+4. Low sodium diet — less than 2g sodium per day
+5. Avoid NSAIDs — can raise blood pressure and worsen kidney function
+6. Prescription assistance program enrolled — contact pharmacy for details
+
+FOLLOW-UP:
+Primary Care Physician — within 3 days
+Nephrology — 2 weeks given CKD and new Lisinopril
+
+DISCHARGE CONDITION: Stable
+ATTENDING PHYSICIAN: Dr. James Park, MD
