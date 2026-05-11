@@ -15,24 +15,15 @@ DB_CONFIG = {
 
 
 def get_connection():
-    """Create and return a database connection."""
     return psycopg2.connect(**DB_CONFIG, cursor_factory=RealDictCursor)
 
 
 def setup_database():
-    """
-    Create all tables and enable pgvector extension.
-    Run this once to initialize the database schema.
-    """
     conn = get_connection()
     cursor = conn.cursor()
 
-    # Enable pgvector extension — this is what allows us to store
-    # and search embeddings (384-dimensional vectors) directly in Postgres
     cursor.execute("CREATE EXTENSION IF NOT EXISTS vector;")
 
-    # knowledge_chunks: stores every parsed chunk of medical text
-    # along with its embedding vector for semantic search
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS knowledge_chunks (
             id SERIAL PRIMARY KEY,
@@ -46,9 +37,6 @@ def setup_database():
         );
     """)
 
-    # Create an index on the embedding column using ivfflat algorithm
-    # This makes vector similarity search fast at scale
-    # probes=10 means check 10 clusters during search — balances speed vs accuracy
     cursor.execute("""
         CREATE INDEX IF NOT EXISTS knowledge_chunks_embedding_idx
         ON knowledge_chunks
@@ -56,8 +44,6 @@ def setup_database():
         WITH (lists = 100);
     """)
 
-    # query_logs: stores every user query with metadata
-    # This feeds our drift monitoring in Week 5
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS query_logs (
             id SERIAL PRIMARY KEY,
@@ -72,7 +58,6 @@ def setup_database():
         );
     """)
 
-    # experiment_runs: stores A/B experiment results for Week 4
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS experiment_runs (
             id SERIAL PRIMARY KEY,
@@ -84,6 +69,26 @@ def setup_database():
             confidence_score FLOAT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS response_cache (
+            id SERIAL PRIMARY KEY,
+            query_embedding vector(384) NOT NULL,
+            query_text TEXT NOT NULL,
+            answer TEXT NOT NULL,
+            sources JSONB,
+            confidence FLOAT,
+            strategy VARCHAR(20),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+    """)
+
+    cursor.execute("""
+        CREATE INDEX IF NOT EXISTS response_cache_embedding_idx
+        ON response_cache
+        USING ivfflat (query_embedding vector_cosine_ops)
+        WITH (lists = 50);
     """)
 
     conn.commit()
